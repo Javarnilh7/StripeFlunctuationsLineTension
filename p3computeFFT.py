@@ -110,79 +110,79 @@ def analyze_and_plot_stripes(df, line_pairs, frame_idx):
     print(bins)
     sqbins = bins * bins
 
-    fig1 = plt.figure(1, figsize=(18, 10))
-
-
-    # -------------------- PLOTTING FIGURE 1 -------------------
-    plt.figure(1)
-
-    # Subplot 1: Raw Coordinates
-    plt.subplot(2, 3, 1)
-    plt.scatter(x_raw, y_raw, s=12, alpha=0.6, label="Raw Coordinates")
-
-    # Subplot 2: Interpolation
-    plt.subplot(2, 3, 2)
-    plt.scatter(x_uniform, y_uniform, s=12, alpha=0.6, label="Integer Points Rescaled")
-    plt.plot(x_dense, y_dense, lw=1.2, label="Interpolation")
-    # plt.scatter(x_raw, detrend(y_raw), color='r', s=12, alpha=0.6, label="Raw coordinates (Detrended)")
-    plt.scatter(x_raw, y_raw, color='r', s=12, alpha=0.6, label="Raw Coordinates")
-
-    # Subplot 3:
-    plt.subplot(2, 3, 3)
-    # plt.plot(Hz, np.abs(comp_fft_scaled[0:len(Hz)]) / num_samples, 'ys-', label='Amplitude Spectrum')
-    # plt.plot(Hz, X_Power[0:len(Hz)], 'ms-', label='Power Spectrum')
-
-    markerline, stemlines, baseline = plt.stem(amps2)
-    plt.setp(stemlines, 'linewidth', 1.5)
-
-    # Subplot 4:
-    plt.subplot(2, 3, 4)
-    markerline, stemlines, baseline = plt.stem(amps_single_sided2)
-    plt.setp(stemlines, 'linewidth', 1.5)
-
-    # Subplot 5: sqREAL against sqmode (full spectrum sq)
-    plt.subplot(2, 3, 5)
-    plt.scatter(sqbins, sqcoef, s=12, alpha=0.6, label="Sq Coefficients")
-
-    # Subplot 6: sqREAL against sqmode (corrected then sq) // UNSURE HOW TO DO THIS UNFINISHED
-    # plt.subplot(2, 3, 6)
-    # ampsbins = np.arange(0, len(amps_single_sided2))
-    # sqAmpsbins = ampsbins * ampsbins
-    # print(len(sqAmpsbins), len(sqbins), len(sqcoef), "sizing")
+    # fig1 = plt.figure(1, figsize=(18, 10))
+    #
+    #
+    # # -------------------- PLOTTING FIGURE 1 -------------------
+    # plt.figure(1)
+    #
+    # # Subplot 1: Raw Coordinates
+    # plt.subplot(2, 3, 1)
+    # plt.scatter(x_raw, y_raw, s=12, alpha=0.6, label="Raw Coordinates")
+    #
+    # # Subplot 2: Interpolation
+    # plt.subplot(2, 3, 2)
+    # plt.scatter(x_uniform, y_uniform, s=12, alpha=0.6, label="Integer Points Rescaled")
+    # plt.plot(x_dense, y_dense, lw=1.2, label="Interpolation")
+    # # plt.scatter(x_raw, detrend(y_raw), color='r', s=12, alpha=0.6, label="Raw coordinates (Detrended)")
+    # plt.scatter(x_raw, y_raw, color='r', s=12, alpha=0.6, label="Raw Coordinates")
+    #
+    # # Subplot 3:
+    # plt.subplot(2, 3, 3)
+    # # plt.plot(Hz, np.abs(comp_fft_scaled[0:len(Hz)]) / num_samples, 'ys-', label='Amplitude Spectrum')
+    # # plt.plot(Hz, X_Power[0:len(Hz)], 'ms-', label='Power Spectrum')
+    #
+    # markerline, stemlines, baseline = plt.stem(amps2)
+    # plt.setp(stemlines, 'linewidth', 1.5)
+    #
+    # # Subplot 4:
+    # plt.subplot(2, 3, 4)
+    # markerline, stemlines, baseline = plt.stem(amps_single_sided2)
+    # plt.setp(stemlines, 'linewidth', 1.5)
+    #
+    # # Subplot 5: sqREAL against sqmode (full spectrum sq)
+    # plt.subplot(2, 3, 5)
     # plt.scatter(sqbins, sqcoef, s=12, alpha=0.6, label="Sq Coefficients")
-
-    # ---------------- Format Figure 1 Subplots ----------------
-    plt.figure(1)
-    titles_fig1 = [
-        "Raw Pixel Coordinates", "Rescaled Integer-Cycle Grid", "Spatial Fourier Transform (indices)",
-        "Spatial Fourier Transform (0 to Nyquist)", "Sq Coefficients (Full)", "Corrected Sq Coefficients"
-    ]
-    x_labels_fig1 = [
-        "White X (pixels)", "White X (pixels)", "Frequency Bin",
-        "Spatial Frequency (cycles/px)", 'Frequency Bin', "Frequency Bin"
-    ]
-    y_labels_fig1 = [
-        "White Y (pixels)", "White Y (pixels)", "Amplitude",
-        "Normalized Amplitude", 'Amplitude', "Amplitude"
-    ]
-
-    for i in range(1, 7):
-        plt.subplot(2, 3, i)
-        plt.title(titles_fig1[i - 1])
-        plt.xlabel(x_labels_fig1[i - 1])
-        plt.ylabel(y_labels_fig1[i - 1])
-        plt.grid(True, linestyle="--", alpha=0.5)
-        plt.legend(fontsize=8)
-
-        if i in [1, 2]:
-            # plt.xticks(0, x_microns)
-            # plt.yticks(0, y_microns)
-            plt.gca().invert_yaxis()
-
-
-    plt.tight_layout()
-
-    plt.show()
+    #
+    # # Subplot 6: sqREAL against sqmode (corrected then sq) // UNSURE HOW TO DO THIS UNFINISHED
+    # # plt.subplot(2, 3, 6)
+    # # ampsbins = np.arange(0, len(amps_single_sided2))
+    # # sqAmpsbins = ampsbins * ampsbins
+    # # print(len(sqAmpsbins), len(sqbins), len(sqcoef), "sizing")
+    # # plt.scatter(sqbins, sqcoef, s=12, alpha=0.6, label="Sq Coefficients")
+    #
+    # # ---------------- Format Figure 1 Subplots ----------------
+    # plt.figure(1)
+    # titles_fig1 = [
+    #     "Raw Pixel Coordinates", "Rescaled Integer-Cycle Grid", "Spatial Fourier Transform (indices)",
+    #     "Spatial Fourier Transform (0 to Nyquist)", "Sq Coefficients (Full)", "Corrected Sq Coefficients"
+    # ]
+    # x_labels_fig1 = [
+    #     "White X (pixels)", "White X (pixels)", "Frequency Bin",
+    #     "Spatial Frequency (cycles/px)", 'Frequency Bin', "Frequency Bin"
+    # ]
+    # y_labels_fig1 = [
+    #     "White Y (pixels)", "White Y (pixels)", "Amplitude",
+    #     "Normalized Amplitude", 'Amplitude', "Amplitude"
+    # ]
+    #
+    # for i in range(1, 7):
+    #     plt.subplot(2, 3, i)
+    #     plt.title(titles_fig1[i - 1])
+    #     plt.xlabel(x_labels_fig1[i - 1])
+    #     plt.ylabel(y_labels_fig1[i - 1])
+    #     plt.grid(True, linestyle="--", alpha=0.5)
+    #     plt.legend(fontsize=8)
+    #
+    #     if i in [1, 2]:
+    #         # plt.xticks(0, x_microns)
+    #         # plt.yticks(0, y_microns)
+    #         plt.gca().invert_yaxis()
+    #
+    #
+    # plt.tight_layout()
+    #
+    # plt.show()
 
     # Pandas (append data to excel)
     max_rows = len(bins)

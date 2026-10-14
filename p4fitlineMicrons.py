@@ -1,3 +1,5 @@
+# this program is the same as p4fitline but with micron converted numbers, I want to compare the two results.
+
 # import all libraries and requirements
 import math
 import matplotlib.pyplot as plt
@@ -11,7 +13,7 @@ from scipy.signal import detrend
 
 # Main
 
-# import the file from importallFramesfft.py
+# import the file from p3computeFFT.py
 # IN THE FUTURE, IMPLEMENT A WAY TO DETECT SPECIFIC NAMED FILES to distinguish excel files needed for this file and previous one
 files = [f for f in glob.glob("*_processed_frames_output.xlsx") if not f.startswith("~$")]
 
